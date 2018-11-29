@@ -1,0 +1,188 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    user-select: none;
+    -moz-user-select: none;
+}
+#about-body{
+
+    background: linear-gradient( to bottom right, #e8aea7, #ffeaa8, #d7ecf8);
+    transition: all 0.45s;
+}
+.nav {
+    width: 100%;
+    z-index: 1;
+}
+.site-logo {
+    display: flex;
+    align-items: center;
+}
+.site-logo a {
+    /*font-size: 13px;*/
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.site-logo a img {
+    width: 50px;
+    margin-right: 20px;
+}
+.wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 8em;
+    width: 100%;
+    height:40vh;
+}
+#learn,#blend{
+    font-size: x-large;
+}
+#site-info{
+    z-index: -1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 8em;
+    width: 100%;
+    height:40vh;
+}
+#site-info-text{
+    margin-top: 40px;
+    color:black;
+    width: 80%;
+}
+#loading-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20vh;
+    margin: 20px;
+    width: 60%;
+    color: #9d9d9d;
+
+}
+#siteaim {
+    margin: 8em auto 0 auto;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 40vh;
+}
+#siteaim img {
+    width: 100%;
+    /*max-height: 100%;*/
+    z-index: -1;
+}
+.el {
+    position: absolute;
+    opacity: 1;
+    width: 1px;
+    height: 10vh;
+    margin-top: -8vh;
+    transform-origin: 50% 100%;
+    background: white;
+}
+.elthick{
+    position: absolute;
+    opacity: 10;
+    width: 1px;
+    height: 10vh;
+    margin-top: -8vh;
+    transform-origin: 50% 100%;
+    background: white;
+}
+.buttons {
+    justify-content: center;
+
+}
+
+#loading-intro {
+    height: 20vh;
+    margin: 20px;
+    width: 60%;
+    color: #9d9d9d;
+}
+
+.mainbtn{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+canvas {
+    /*margin-top: -2vh;*/
+    position: absolute;
+    z-index: -1;
+}
+
+.footer {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    padding: 2em 0 0 0;
+}
+
+@media (min-width: 768px) {
+    .buttons {
+        display: flex;
+        margin: 2em auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-logo {
+        width: 32px;
+    }
+    #colorwheel {
+        margin: 5em auto 2em auto;
+        width: 100%;
+        height: 40vh;
+    }
+    /*.wrapper {*/
+        /*!*height: 80vh;*!*/
+        /*!*margin: 5em auto;*!*/
+        /*!*has problem on iphone se screen*!*/
+    /*}*/
+    .el{
+        margin-top: -4vh;
+    }
+    .buttons {
+        margin: 5em auto 1em auto;
+        align-items: center;
+    }
+    .buttons div{
+        text-align: center;
+        margin: 10px auto;
+    }
+    #loading-intro {
+        height: auto;
+        margin: 0 auto;
+        width: 80%;
+    }
+}
+
+/*primary color page*/
+#c{
+    position: absolute;
+    z-index: -1;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    cursor: pointer;
+}
+
+.color-description{
+    color:black;
+    width:60%;
+}
+
+.color-definition {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}

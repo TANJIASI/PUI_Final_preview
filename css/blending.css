@@ -1,0 +1,293 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.nav {
+    width: 100%;
+    z-index: 1;
+}
+
+.site-logo {
+    display: flex;
+    align-items: center;
+}
+.site-logo a {
+    font-size: 13px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.site-logo a img {
+    width: 64px;
+    margin-right: 20px;
+}
+
+#two-canvas {
+    width: 100vw;
+    display: flex;
+    margin: 0 auto;
+    z-index: -1;
+}
+#two-canvas div {
+    width: 50%;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*align-items: center;*/
+    /*background-color: white; !*white background opacity 0.5*!*/
+    /*border-radius: 30px;*/
+    /*opacity: 0.5;*/
+    width: 100%;
+    margin: 15vh 30px 0 30px;
+    /*margin: 20vh auto;*/
+    /*height: 100vh;*/
+    z-index: 1;
+}
+
+#mix-color, #clear-color  {
+    font-size: xx-large;
+    width: 15%;
+    margin: 10px auto;
+    display: block;
+}
+
+/*#mix-color:active, #clear-color:active {*/
+    /*outline: none;*/
+/*}*/
+
+#panels {
+    display: flex;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.btns-left, .btns-right {
+    display: flex;
+    /*width: 100%;*/
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.btn {
+    /*width: 100%;*/
+    margin: 5px auto;
+    display: block;
+    text-align: center;
+}
+
+#panels div p {
+    margin: 20px auto;
+}
+
+#panel-left, #panel-right {
+    display: flex;
+}
+
+#panel-left {
+    margin-left: 20px;
+}
+
+#panel-right {
+    margin-right: 20px;
+}
+
+/*#mixed-color-left-t {*/
+    /*width: 100%;*/
+/*}*/
+
+#mixed-color-left, #mixed-color-right, #mixed-color-white,
+.mixed-color-left, .mixed-color-right{
+    /*position: absolute;*/
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 20vh;
+    height: 20vh;
+    /*display: block;*/
+    margin: -80vh auto;
+    text-align: center;
+    /*background-color: #002752;*/
+}
+
+
+
+#mixed-color-white {
+    background-color: white;
+    z-index: -1;
+}
+/*#mixed-color-right {*/
+    /*position: absolute;*/
+    /*border: 3px solid white;*/
+    /*border-radius: 50%;*/
+    /*width: 20vh;*/
+    /*height: 20vh;*/
+    /*!*display: block;*!*/
+    /*margin: -20vh auto;*/
+    /*text-align: center;*/
+    /*background-color: #002752;*/
+/*}*/
+
+
+
+
+
+
+canvas {
+    /*margin-top: -2vh;*/
+    /*text-align: left;*/
+    /*position: absolute;*/
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    /*margin-top: -40vh;*/
+    /*height: 100vh;*/
+}
+
+
+.footer {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    padding: 2em 0 0 0;
+}
+
+@media (min-width: 767.95px) {
+    .buttons {
+        display: flex;
+        margin: 2em auto;
+    }
+
+}
+
+@media (min-width: 767.95px) {
+    .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767.95px) {
+    .site-logo {
+        width: 32px;
+    }
+    /*#colorwheel {*/
+        /*margin: 5em auto 2em auto;*/
+        /*width: 100%;*/
+        /*height: 40vh;*/
+    /*}*/
+    .wrapper {
+        /*height: 80vh;*/
+        /*margin: 5em auto;*/
+        /*has problem on iphone se screen*/
+    }
+    .el{
+        margin-top: -4vh;
+    }
+    .buttons {
+        margin: 5em auto 1em auto;
+        align-items: center;
+    }
+    .buttons div{
+        text-align: center;
+        margin: 10px auto;
+    }
+    #loading-intro {
+        height: auto;
+        margin: 0 auto;
+        width: 80%;
+    }
+}
+
+@media (max-width: 767.95px) {
+    h2 {
+        font-size: 10pt;
+    }
+    #panels {
+        display: flex;
+        /*flex-direction: column;*/
+
+        position: absolute;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+    p {
+        font-size: 8pt;
+    }
+    /*.color-description{*/
+        /*color:black;*/
+        /*width:90%;*/
+    /*}*/
+    #main-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /*align-items: center;*/
+        /*background-color: white; !*white background opacity 0.5*!*/
+        /*border-radius: 30px;*/
+        /*opacity: 0.5;*/
+        width: 100%;
+        margin: 5vh 0 0 0;
+        /*margin: 20vh auto;*/
+        /*height: 100vh;*/
+        z-index: 1;
+    }
+    .btn {
+        font-size: xx-small;
+        width: 100%;
+    }
+    #mix-color, #clear-color  {
+
+        width: 60%;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .btns-left, .btns-right {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        margin: 0;
+        font-size: 8pt;
+    }
+}
+
+@media (max-width: 992px) {
+    .btns-left .btn, .btns-right .btn {
+        font-size: xx-small;
+        width: 100%;
+    }
+}
+
+/*@media (max-width: 376.95px) {*/
+    /*.btns-left, .btn-right {*/
+        /*margin: 2px;*/
+    /*}*/
+    /*.btn {*/
+        /*margin: 2px;*/
+    /*}*/
+/*}*/
+
+/*primary color page*/
+#c{
+    /*position: absolute;*/
+    z-index: -1;
+    display: block;
+    /*width: 100vw;*/
+    height: 100vh;
+    cursor: pointer;
+}
+
+.color-description{
+    color:black;
+    width:60%;
+}
