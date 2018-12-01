@@ -35,6 +35,6 @@ function createEl(i) {
         }
     });
     wrapperEl.appendChild(el);
-};
+}
 
 for (let i = 0; i < numberOfEls; i++) createEl(i);

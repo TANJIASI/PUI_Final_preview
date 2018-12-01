@@ -1,18 +1,15 @@
-// reference:
-//     Anime.js Fireworks canvas demo
-//     https://codepen.io/juliangarnier/pen/gmOwJX
-
+// Reference: Anime.js seamless infinite looping animation
+// https://codepen.io/juliangarnier/pen/rGjMyW
 
 window.human = false;
-
 var canvasEl = document.querySelector('.fireworks');
 var ctx = canvasEl.getContext('2d');
 var numberOfParticules = 12;
 var pointerX = 0;
 var pointerY = 0;
 var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown';
-// var colors = ['#ffd8c5', '#18FF92', '#99ffee', '#FBF38C'];
-var colors = ["#ffd8c5", "#aafff7", "#FBF8C5", "#C5E1A5" ]
+var colors = ["#ffd8c5", "#aafff7", "#FBF8C5", "#C5E1A5" ];
+
 
 function setCanvasSize() {
     canvasEl.width = window.innerWidth * 2;
@@ -21,12 +18,10 @@ function setCanvasSize() {
     canvasEl.style.height = window.innerHeight + 'px';
     canvasEl.getContext('2d').scale(2, 2);
 }
-
 function updateCoords(e) {
     pointerX = e.clientX || e.touches[0].clientX;
     pointerY = e.clientY || e.touches[0].clientY;
 }
-
 function setParticuleDirection(p) {
     var angle = anime.random(0, 360) * Math.PI / 180;
     var value = anime.random(50, 180);
@@ -36,7 +31,6 @@ function setParticuleDirection(p) {
         y: p.y + radius * Math.sin(angle)
     }
 }
-
 function createParticule(x,y) {
     var p = {};
     p.x = x;
@@ -52,7 +46,6 @@ function createParticule(x,y) {
     };
     return p;
 }
-
 function createCircle(x,y) {
     var p = {};
     p.x = x;
@@ -72,13 +65,11 @@ function createCircle(x,y) {
     };
     return p;
 }
-
 function renderParticule(anim) {
     for (var i = 0; i < anim.animatables.length; i++) {
         anim.animatables[i].target.draw();
     }
 }
-
 function animateParticules(x, y) {
     var circle = createCircle(x, y);
     var particules = [];
@@ -109,24 +100,20 @@ function animateParticules(x, y) {
             offset: 0
         });
 }
-
 var render = anime({
     duration: Infinity,
     update: function() {
         ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
     }
 });
-
 document.addEventListener(tap, function(e) {
     window.human = true;
     render.play();
     updateCoords(e);
-    animateParticules(pointerX, pointerY+150);
+    animateParticules(pointerX, pointerY+50);
 }, false);
-
 var centerX = window.innerWidth / 2;
 var centerY = window.innerHeight / 2;
-
 function autoClick() {
     if (window.human) return;
     animateParticules(
@@ -135,7 +122,6 @@ function autoClick() {
     );
     anime({duration: 400}).finished.then(autoClick);
 }
-
 autoClick();
 setCanvasSize();
 window.addEventListener('resize', setCanvasSize, false);

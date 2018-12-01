@@ -1,133 +1,113 @@
-// var cl = document.getElementById("c-left");
-// var cr = document.getElementById("c-right");
+// Reference: Anime.js fireworks canvas demo
+// https://codepen.io/juliangarnier/pen/gmOwJX
+
+
+// initializing global variables
 var c = document.getElementById("c-left");
 var ctx = c.getContext("2d");
-// var ctxr = cr.getContext("2d");
 var cH;
 var cW;
 var bgColor = "#ffffff";
 var animations = [];
-// var circles = [];
-
-
 var activeCanvas = null;
 
+// after the page is loaded, detect button click events
 $(document).ready(function () {
     var colorLeft = null;
     var colorRight = null;
-
     $(".btns-left button").removeClass("btn-outline-light");
     $(".btns-left button").addClass("btn-outline-dark");
     $(".btns-right button").removeClass("btn-outline-light");
     $(".btns-right button").addClass("btn-outline-dark");
 
-    $(".color-left").click(function (e) {
-        // console.log(e);
+    // when left buttons are clicked, change the color of the left canvas
+    $(".color-left").click(function (e){
+        // if the "mixed" button has been clicked before, when clicked on the color buttons, set the background back to transparent
+        $("#mix-color").css({"background-color": "rgba(255,255,255,0.5)"});
 
-
-
+        // once the canvas color is not white, change the button to a different class
         $(".btns-left button").removeClass("btn-outline-dark");
         $(".btns-left button").addClass("btn-outline-light");
 
-        console.log("this.id",this.id);
-        // this.parentElement.children.css({"font-weight": "regular", "border": "1px solid white"});
-
+        // set the selected button as highlighted
         $(".btns-left .btn").css({"font-weight": "normal", "border": "1px solid white"});
-        $("#"+this.id).css({"font-weight": "bold", "border": "4px solid white"});
+        $("#"+this.id).css({"font-weight": "normal", "border": "1px solid black"});
 
-
-
+        // set ctx to current canvas
         c = document.getElementById("c-left");
         ctx = c.getContext("2d");
         activeCanvas = "left";
-        var color = $(this).text();
 
+        // set desired color
+        var color = $(this).text();
         colorLeft = color;
-        console.log("clicked left"); // NSH
-        console.log(color);
         colorLeft = changeColor(color);
 
+        // refresh canvas
         resizeCanvas();
-
         window.addEventListener("resize", resizeCanvas);
-        // addClickListeners();
         if (!!window.location.pathname.match(/fullcpgrid/)) {
             startFauxClicking();
         }
 
+        // handle touch event
         handleEvent(e);
-        // var mixedColor = mixColor(colorLeft, colorRight);
-        // $("#mixed-color").css({"background-color": mixedColor});
-        // $("#mixed-color-left").css({"background-color": changeColor(colorLeft), "opacity":0.5});
     }) ;
 
-
     $(".color-right").click(function (e) {
+        // if the "mixed" button has been clicked before, when clicked on the color buttons, set the background back to transpar
+        $("#mix-color").css({"background-color": "rgba(255,255,255,0.5)"});
 
-        $(".btns-right .btn").css({"font-weight": "normal", "border": "1px solid white"});
-        $("#"+this.id).css({"font-weight": "bold", "border": "4px solid white"});
-
-        // ctx = cr.getContext("2d");
+        // once the canvas color is not white, change the button to a different class
         $(".btns-right button").removeClass("btn-outline-dark");
         $(".btns-right button").addClass("btn-outline-light");
 
+        // set the selected button as highlighted
+        $(".btns-right .btn").css({"font-weight": "normal", "border": "1px solid white"});
+        $("#"+this.id).css({"font-weight": "normal", "border": "1px solid black"});
+
+        // set ctx to current canvas
         c = document.getElementById("c-right");
         ctx = c.getContext("2d");
-
-        console.log(ctx);
         activeCanvas = "right";
+
+        // set the desired color
         var color = $(this).text();
         colorRight = color;
-        console.log("clicked right"); // NSH
-        console.log(color);
         colorRight = changeColor(color);
 
         resizeCanvas();
-
         window.addEventListener("resize", resizeCanvas);
         if (!!window.location.pathname.match(/fullcpgrid/)) {
             startFauxClicking();
         }
-        handleEvent(e, ctx);
 
-        // var mixedColor = mixColor(colorLeft, colorRight);
-
-        // $("#mixed-color").css({"background-color": mixedColor});
-        // $("#mixed-color-right").css({"background-color": changeColor(colorRight), "opacity":0.5});
+        // handle touch event
+        handleEvent(e);
     }) ;
 
+    // when mix! is clicked, set the button to be highlighted until the colors buttons are clicked again
     $("#mix-color").click(function () {
-        console.log("Clicked Mix!"); // NSH
-        console.log("Left color is " + colorLeft);
-        console.log("Right color is " + colorRight);
-
+        // reset both canvas to prevent a situation:
+        // when the right canvas is set before the left canvas, left canvas will change to the same color as the right one
         var cl = document.getElementById("c-left");
         var ctxl = cl.getContext("2d");
         var cr = document.getElementById("c-right");
         var ctxr = cr.getContext("2d");
-
         ctxr.fillStyle = colorRight;
         ctxr.fillRect(0, 0, cW, cH);
-
         ctxl.fillStyle = colorLeft;
         ctxl.fillRect(0, 0, cW, cH);
 
-
+        // set the middle circles to both color, stacked together, to produce the mixed color
         $(".mixed-color-left").css({"background-color": colorLeft, "opacity":0.5});
         $(".mixed-color-right").css({"background-color": colorRight, "opacity":0.5});
-
-
+        $("#mix-color").css({"background-color": "#090e1f"})
     });
-
-    $("#clear-color").click(function () {
-        $("#mixed-color-left").css({"background-color": "#fff", "opacity":0.5});
-        $("#mixed-color-right").css({"background-color": "#fff", "opacity":0.5});
-    })
 
 });
 
-
-
+// change color from the button text to hex value
 function changeColor(color) {
     var colorHex = null;
     switch (color) {
@@ -167,120 +147,47 @@ function changeColor(color) {
         case "Red-Violet":
             colorHex = "#c2185b";
             break;
-        // default:
-        //     colorHex = "#ffffff";
+        default:
+            colorHex = "#ffffff";
     }
 
     bgColor = colorHex;
-
     return colorHex;
-
 }
 
-
-// function mixColor (colorLeft, colorRight) {
-//     var colors = [colorLeft, colorRight];
-//     var resultColor = null;
-//     if (colorLeft === null || colorRight ===null) {
-//         resultColor = "#aaaaaa";
-//     } else {
-//
-//         if (colors[0] === colors[1]) {
-//             resultColor = colors[0];
-//         }
-//
-//         if (colors.indexOf("Red")!==-1 && colors.indexOf("Blue") !== -1) {
-//             // resultColor = "#972cb0"; // Violet
-//             resultColor = "Violet";
-//         }
-//
-//         if (colors.indexOf("Yellow")!==-1 && colors.indexOf("Blue") !== -1) {
-//             // resultColor = "#aed581"; //Green
-//             resultColor = "Green";
-//         }
-//
-//         if (colors.indexOf("Yellow")!==-1 && colors.indexOf("Red") !== -1) {
-//             // resultColor = "#ff9800"; //Orange
-//             resultColor = "Orange";
-//         }
-//
-//         if (colors.indexOf("Red")!==-1 && colors.indexOf("Orange") !== -1) {
-//             // resultColor = "#ff5722"; // Red-Orange
-//             resultColor = "Red-Orange";
-//         }
-//
-//         if (colors.indexOf("Yellow")!==-1 && colors.indexOf("Orange") !== -1) {
-//             resultColor = "#ffc107"; // Yellow-Orange
-//             resultColor = "Yellow-Orange";
-//         }
-//
-//         if (colors.indexOf("Yellow")!==-1 && colors.indexOf("Green") !== -1) {
-//             resultColor = "#cddc39"; // Yellow-Green
-//             resultColor = "Yellow-Green";
-//         }
-//
-//         if (colors.indexOf("Blue")!==-1 && colors.indexOf("Green") !== -1) {
-//             resultColor = "#26a69a"; // Blue-Green
-//             resultColor = "Blue-Green";
-//         }
-//
-//         if (colors.indexOf("Blue")!==-1 && colors.indexOf("Violet") !== -1) {
-//             resultColor = "#7b1fa2"; // Blue-Violet
-//             resultColor = "Blue-Violet";
-//         }
-//
-//         if (colors.indexOf("Red")!==-1 && colors.indexOf("Violet") !== -1) {
-//             resultColor = "#c2185b"; // Red-Violet
-//             resultColor = "Red-Violet";
-//         }
-//
-//     }
-//
-//     console.log("result color:", resultColor);
-//     resultColor = changeColor(resultColor);
-//
-//     return resultColor;
-//
-//
-// }
-
-
-
-
+// function for removing animation
 function removeAnimation(animation) {
     var index = animations.indexOf(animation);
     if (index > -1) animations.splice(index, 1);
 }
 
+//
 function calcPageFillRadius(x, y) {
     var l = Math.max(x - 0, cW - x);
     var h = Math.max(y - 0, cH - y);
     return Math.sqrt(Math.pow(l, 2) + Math.pow(h, 2));
 }
 
-
+// function handle event
+// get touch x and y
 function handleEvent(e) {
     if (e.touches) {
         e.preventDefault();
         e = e.touches[0];
-
-        // console.log(e);
     }
     var pageX = e.pageX;
     var pageY = e.pageY;
-
-
     if(activeCanvas === "right"){
         pageX = e.pageX - window.innerWidth / 2;
         console.log("pageX", pageX);
     }
     console.log("pageY", pageY);
-
     var targetR = calcPageFillRadius(pageX, pageY);
     console.log("targetR", targetR);
     var rippleSize = Math.min(200, (cW * .4));
     var minCoverDuration = 1000;
 
+    // define page fill animation
     var pageFill = new Circle({
         x: pageX,
         y: pageY,
@@ -288,20 +195,19 @@ function handleEvent(e) {
         fill: bgColor,
         opacity: 1
     });
-    console.log("pageFill", pageFill);
     var fillAnimation = anime({
         targets: pageFill,
         r: targetR,
         duration:  Math.max(targetR / 2 , minCoverDuration ),
         easing: "easeOutQuart",
         opacity: 1,
-
         complete: function(){
             bgColor = pageFill.fill;
             removeAnimation(fillAnimation);
         }
     });
 
+    // define ripple animation
     var ripple = new Circle({
         x: pageX,
         y: pageY,
@@ -322,6 +228,7 @@ function handleEvent(e) {
         complete: removeAnimation
     });
 
+    // define particle animation
     var particles = [];
     for (var i=0; i<32; i++) {
         var particle = new Circle({
@@ -345,10 +252,9 @@ function handleEvent(e) {
         duration: anime.random(1000,1300),
         complete: removeAnimation
     });
+
+    // push animations
     animations.push(fillAnimation, rippleAnimation, particlesAnimation);
-    // console.log(currentText);
-
-
 }
 
 function extend(a, b){
@@ -360,6 +266,7 @@ function extend(a, b){
     return a;
 }
 
+//
 var Circle = function(opts) {
     extend(this, opts);
 };
@@ -379,9 +286,9 @@ Circle.prototype.draw = function() {
     }
     ctx.closePath();
     ctx.globalAlpha = 0.5;
-
 };
 
+// define animation functions
 var animate = anime({
     duration: Infinity,
     update: function() {
@@ -396,63 +303,25 @@ var animate = anime({
     }
 });
 
+// function resize canvas
 var resizeCanvas = function() {
     cW = window.innerWidth / 2;
     cH = window.innerHeight;
-
     c.width = cW * devicePixelRatio;
     c.height = cH * devicePixelRatio;
-
-    // cl.width = cW * devicePixelRatio;
-    // cl.height = cH * devicePixelRatio;
-    // cr.width = cW * devicePixelRatio;
-    // cr.height = cH * devicePixelRatio;
-
     ctx.scale(devicePixelRatio, devicePixelRatio);
 };
 
-
-// function handleInactiveUser() {
-//     var inactive = setTimeout(function(){
-//         fauxClick(200, 300);
-//     }, 2);
-//
-//     function clearInactiveTimeout() {
-//         clearTimeout(inactive);
-//         document.removeEventListener("mousedown", clearInactiveTimeout);
-//         document.removeEventListener("touchstart", clearInactiveTimeout);
-//     }
-//
-//     document.addEventListener("mousedown", clearInactiveTimeout);
-//     document.addEventListener("touchstart", clearInactiveTimeout);
-// }
-
+// click event
 function startFauxClicking() {
     setTimeout(function(){
         fauxClick(anime.random( cW * .2, cW * .8), anime.random(cH * .2, cH * .8));
         startFauxClicking();
     }, anime.random(20, 90));
 }
-
 function fauxClick(x, y) {
     var fauxClick = new Event("mousedown");
     fauxClick.pageX = x;
     fauxClick.pageY = y;
     document.dispatchEvent(fauxClick);
 }
-
-
-// select the correct target by class or by id
-// var cssSelector = anime({
-//     targets: '.btns-left', //select by class
-//     translateX: 250,
-//
-// });
-
-// var restartAnim = anime({
-//     targets: '.btns-left',
-//     translateX: 250,
-//     delay: function(el, i, l) { return i * 100; },
-//     direction: 'alternate',
-//     loop:
-// });

@@ -1,3 +1,4 @@
+// reference
 
 $(".btn").removeClass("btn-outline-light");
 $(".btn").addClass("btn-outline-dark");
@@ -28,9 +29,9 @@ var colorPicker = (function() {
     }
 })();
 
-// self-added
+// self-added, pick text from color description
 var textPicker = (function() {
-    var colortext = ["yellow", "blue", "red"];
+    var colortext = ["YELLOW", "BLUE", "RED"];
     var index = 0;
     function next() {
         index = index++ < colortext.length-1 ? index : 0;
@@ -45,7 +46,9 @@ var textPicker = (function() {
     }
 })();
 var descriptionPicker = (function() {
-    var colordescription = ["Yellow is a very bright color, it gives people a feeling of happiness, warmness. Thank about what surround you are yellow? Yes, the sun! Banana! Lemon!", "How do you like blue? Blue could clam people, it's the color of the ocean. What surround you is blue? Right, the sky! Look at the sky, when there's no cloud, it's blue!", "Red is a very beautiful color, have you seen the sunset? Yes, the color of sunset is red! Think about what else is red? An apple! Pomegranates!"];
+    var colordescription = ["Yellow is a bright color, it’s the color of sunshine, hope and happiness! What fruits are yellow? Banana and lemons!",
+                        "Blue represents both the sky and the sea, and is associated with open spaces, freedom, intuition, imagination, expansiveness, inspiration, and sensitivity.",
+                        "Have you ever seen the sunset? What color is it? RED! Red is a very beautiful color! Apples and pomegranates are red too!"];
     var index = 0;
     function next() {
         index = index++ < colordescription.length-1 ? index : 0;
@@ -95,7 +98,7 @@ function handleEvent(e) {
 
         // self-added
         var currentText = textPicker.current();
-        var nextText = textPicker.next();
+        var nextText = textPicker.next(); // just need to execute next(), no need to use the variable
         var currentDescription = descriptionPicker.current();
         var nextDescription = descriptionPicker.next();
 
@@ -189,7 +192,7 @@ function extend(a, b){
 
 var Circle = function(opts) {
     extend(this, opts);
-}
+};
 
 Circle.prototype.draw = function() {
     ctx.globalAlpha = this.opacity || 1;
@@ -206,7 +209,7 @@ Circle.prototype.draw = function() {
     }
     ctx.closePath();
     ctx.globalAlpha = 1;
-}
+};
 
 var animate = anime({
     duration: Infinity,
@@ -244,20 +247,21 @@ var resizeCanvas = function() {
     // handleInactiveUser();
 })();
 
-function handleInactiveUser() {
-    var inactive = setTimeout(function(){
-        fauxClick(cW/2, cH/2);
-    }, 2000);
-
-    function clearInactiveTimeout() {
-        clearTimeout(inactive);
-        document.removeEventListener("mousedown", clearInactiveTimeout);
-        document.removeEventListener("touchstart", clearInactiveTimeout);
-    }
-
-    document.addEventListener("mousedown", clearInactiveTimeout);
-    document.addEventListener("touchstart", clearInactiveTimeout);
-}
+// handleInactiveUser is from the original code but is not needed in this file
+// function handleInactiveUser() {
+//     var inactive = setTimeout(function(){
+//         fauxClick(cW/2, cH/2);
+//     }, 2000);
+//
+//     function clearInactiveTimeout() {
+//         clearTimeout(inactive);
+//         document.removeEventListener("mousedown", clearInactiveTimeout);
+//         document.removeEventListener("touchstart", clearInactiveTimeout);
+//     }
+//
+//     document.addEventListener("mousedown", clearInactiveTimeout);
+//     document.addEventListener("touchstart", clearInactiveTimeout);
+// }
 
 function startFauxClicking() {
     setTimeout(function(){

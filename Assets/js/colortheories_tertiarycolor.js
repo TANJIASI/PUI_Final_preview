@@ -10,7 +10,7 @@ var animations = [];
 var circles = [];
 
 var colorPicker = (function() {
-    var colors = ["#aed581", "#ff9800", "#972cb0"];
+    var colors = ["#cddc39", "#ffc107", "#ff5722", "#c2185b", "#7b1fa2", "#26a69a"];
 
     var index = 0;
     function next() {
@@ -28,7 +28,7 @@ var colorPicker = (function() {
 
 // self-added
 var textPicker = (function() {
-    var colortext = ["ORANGE", "VIOLET", "GREEN"];
+    var colortext = ["YELLOW-ORANGE", "ORANGE-RED", "RED-VIOLET", "VIOLET-BLUE", "BLUE-GREEN", "GREEN-YELLOW"];
 
     var index = 0;
     function next() {
@@ -44,7 +44,13 @@ var textPicker = (function() {
     }
 })();
 var descriptionPicker = (function() {
-    var colordescription = ["yellow is blablablabla", "blue is blablablabla", "red is blablablabla"];
+    var colordescription = ["Yellow-orange is the resultant color when blending the primary color yellow and the secondary color orange. It is the color of joy and creativity.",
+                        "Orange-red is the resultant color when blending the primary color red and the secondary color orange. It is stimulating, vibrant, and flamboyant.",
+                        "Red-violet is the resultant color when blending the primary color red and the secondary color violet. It could represent meanings of wealth, extravagance, creativity, wisdom, dignity, grandeur.",
+                        "Violet-blue is the resultant color when blending the primary color blue and the secondary color violet. It could represent meanings of devotion, peace, pride, mystery, independence, and magic.",
+                        "Blue-green is the resultant color when blending the primary color blue and the secondary color green. Blue-green communicates significance, importance, and confidence without creating somber or sinister feelings.",
+                        "Green-yellow is the resultant color when blending the primary color yellow and the secondary color green. It has healing power and is understood to be the most restful and relaxing color for the human eye to view."
+    ];
     var index = 0;
     function next() {
         index = index++ < colordescription.length-1 ? index : 0;
@@ -77,16 +83,16 @@ function addClickListeners() {
 };
 
 function handleEvent(e) {
+
     // after the background become colorful
     // change the class of the button to light
     $(".btn").removeClass("btn-outline-dark");
     $(".btn").addClass("btn-outline-light");
 
     if (e.touches) {
-        // e.preventDefault();
         e = e.touches[0];
     }
-    // console.log();
+
     if (e.pageY > 100) {
 
 
@@ -163,9 +169,8 @@ function handleEvent(e) {
             duration: anime.random(1000, 1300),
             complete: removeAnimation
         });
-
         animations.push(fillAnimation, rippleAnimation, particlesAnimation);
-
+        // console.log(currentText);
 
         // self-added
         $("#color-text").text(currentText);
@@ -228,8 +233,6 @@ var resizeCanvas = function() {
 (function init() {
     resizeCanvas();
     if (window.CP) {
-        // CodePen's loop detection was causin' problems
-        // and I have no idea why, so...
         window.CP.PenTimer.MAX_TIME_IN_LOOP_WO_EXIT = 6000;
     }
     window.addEventListener("resize", resizeCanvas);
@@ -247,7 +250,7 @@ function handleInactiveUser() {
 
     function clearInactiveTimeout() {
         clearTimeout(inactive);
-        // document.removeEventListener("mousedown", clearInactiveTimeout);
+        document.removeEventListener("mousedown", clearInactiveTimeout);
         document.removeEventListener("touchstart", clearInactiveTimeout);
     }
 

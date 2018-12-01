@@ -1,0 +1,257 @@
+body {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    user-select: none;
+    -moz-user-select: none;
+}
+.templateux-navbar {
+    position: relative;
+    width: 100%;
+    min-height: 10vh;
+    max-height: 20vh;
+    padding: 20px 0 0 0;
+    z-index: 2;
+}
+.site-logo {
+    display: flex;
+    align-items: center;
+}
+.site-logo a {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.site-logo a img {
+    width: 50px;
+    margin-right: 20px;
+}
+.main {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.wrapper {
+    position: relative;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height:40vh;
+}
+.el {
+    position: absolute;
+    opacity: 1;
+    width: 1px;
+    height: 10vh;
+    margin-top: -8vh;
+    transform-origin: 50% 100%;
+    background: white;
+}
+.elthick{
+    position: absolute;
+    opacity: 10;
+    width: 1px;
+    height: 10vh;
+    margin-top: -8vh;
+    transform-origin: 50% 100%;
+    background: white;
+}
+.btn {
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+.buttons {
+    justify-content: center;
+    z-index: 1;
+}
+.buttons div {
+    margin: 0 10px;
+}
+#homepage-site-intro{
+    font-size: 1em;
+}
+#homepage-site-intro-short{
+    display: none;
+    font-size: 20px;
+}
+#learn, #blend{
+    font-size: x-large;
+}
+#site-info{
+    z-index: -1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.site-info-text{
+    width:90%;
+    color: #9d9d9d;
+    font-size: 1em;
+    margin: 12px auto;
+
+}
+#site-info-text-short{
+    display: none;
+}
+#loading-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20vh;
+    margin: 20px;
+    width: 60%;
+    color: #9d9d9d;
+}
+#siteaim {
+    margin: 8em auto 0 auto;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 40vh;
+}
+#siteaim img {
+    width: 100%;
+    z-index: -1;
+}
+canvas {
+    position: absolute;
+    z-index: -1;
+}
+#c{
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: -1;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    cursor: pointer;
+}
+.color-description{
+    color:black;
+    width:60%;
+    height: 50px;
+    text-align: center;
+}
+.color-definition {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    margin-top: 20px;
+    padding: 1em 0;
+}
+@media (min-width: 767.95px) {
+    .buttons {
+        display: flex;
+        margin: 2em auto;
+    }
+}
+@media (max-width: 767.95px) {
+    .wrapper {
+        margin-top: 0;
+        padding: 15px auto;
+    }
+    .site-logo {
+        width: 32px;
+    }
+    #colorwheel {
+        margin: 1em auto;
+        width: 100%;
+        height: 40vh;
+    }
+    .el{
+        margin-top: -4vh;
+    }
+    #color-text {
+        text-align: center;
+        font-size: x-large;
+    }
+    .color-description{
+        color:black;
+        width:80%;
+        font-size: small;
+        height: 120px;
+        text-align: center;
+    }
+    .btn {
+        font-size: 9px;
+        width: 100%;
+        text-align: center;
+        /*margin: 0 10px;*/
+    }
+    .buttons {
+        margin: 1em auto;
+        align-items: center;
+    }
+    .buttons div{
+        text-align: center;
+        margin: 5px auto;
+    }
+    #loading-intro {
+        font-size: 9px;
+        height: auto;
+        margin: 0 auto;
+        width: 80%;
+    }
+    #site-info-text{
+        display: none;
+    }
+    #site-info-text-short{
+        display: flex;
+        font-size: 12px;
+        margin-top: 40px;
+        color:black;
+        width:90%;
+    }
+    #learn,#blend{
+        font-size: x-small;
+    }
+    .footer {
+        font-size: 9px;
+        margin-top: 40px;
+        height: 60px;
+        z-index: -1;
+    }
+    .templateux-footer .footer-social a {
+        font-size: 20px;
+    }
+}
+
+/* mobile landscape */
+@media only screen
+    and (min-width: 320px)
+    and (max-width: 667px)
+    and (-webkit-min-device-pixel-ratio: 2)
+    and (orientation: landscape) {
+    #homepage-site-intro-short, #loading-intro{
+        font-size: 9px;
+    }
+    .templateux-navbar {
+        padding: 20px 0;
+    }
+    .btn {
+        font-size: 9px;
+    }
+    .footer {
+        font-size: 9px;
+        margin-top: 40px;
+    }
+    .templateux-footer .footer-social a {
+        font-size: 20px;
+        margin: 0;
+    }
+}

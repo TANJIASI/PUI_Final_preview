@@ -1,20 +1,20 @@
 // AOS
+
+// reference
+
 AOS.init({
     duration: 1000,
-})
+});
 
-jQuery(document).ready(function($){
+$(document).ready(function($){
     'use strict';
-
-
     // Animsition
     $(".animsition").animsition();
 
-    // Scrollax
-    // $.Scrollax();
-
     // Smooth scroll
     var $root = $('html, body');
+
+    // functions for handling scrollling and toggling menu bar
 
     $('a.js-smoothscroll[href^="#"]').click(function () {
         $root.animate({

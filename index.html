@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Colors are Beautiful</title>
-    <link rel="shortcut icon" type="image/png" href="images/favicon2.png">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/aos.min.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/hamburgers/hamburgers.min.css">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="shortcut icon" type="image/png" href="Assets/images/favicon2.png">
+    <link rel="stylesheet" href="Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Assets/css/aos.min.css">
+    <link rel="stylesheet" href="Assets/css/navbar.css">
+    <link rel="stylesheet" href="Assets/css/hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" href="Assets/fonts/icomoon/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="Assets/css/style.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-sm-3 col-3">
                 <div class="site-logo">
-                    <a href="index.html" class="animsition-link"><img src="images/sitelogo.svg" /></a>
+                    <a href="index.html" class="animsition-link"><img src="Assets/images/sitelogo.svg" /></a>
                     <ul class="list-unstyled">
                         <li><a href="index.html" class="animsition-link">HOME</a></li>
                     </ul>
@@ -34,33 +34,37 @@
                 </button>
                 <nav class="templateux-menu js-templateux-menu" role="navigation">
                     <ul class="list-unstyled">
-                        <li><a href="about.html" class="animsition-link">About this Site</a></li>
-                        <li><a href="colortheories.html" class="animsition-link">Color Wheel</a></li>
-                        <li><a href="blending.html" class="animsition-link">Blending Tool</a></li>
+                        <li><a href="html/about.html" class="animsition-link">About this Site</a></li>
+                        <li><a href="html/colortheories.html" class="animsition-link">Color Wheel</a></li>
+                        <li><a href="html/blending.html" class="animsition-link">Blending Tool</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </div>
 </header>
-<section id="colorwheel">
-    <div class="wrapper">
-        <canvas class="fireworks"></canvas>
-    </div>
-</section>
-<section class="buttons">
-    <!--Two main buttons in the home page-->
-    <div>
-        <a id="learn" href="colortheories.html" target="_self" class="btn btn-outline-dark btn-lg mainbtn">Learn the Color Wheel</a>
-    </div>
-    <div>
-        <a id="blend" href="blending.html" target="_self" class="btn btn-outline-dark btn-lg mainbtn">Try the Blending Tool</a>
-    </div>
-</section>
-<section id="loading-intro">
-    <!--<h2>Welcome to the Color World!</h2>-->
-    <p>This website aims for art students, designers or whoever are interested in color blending to test resultant color when blending two or mor colors. Click the left button for color theory for color blending, click the right button for testing color blending either by speech or by typing! </p>
-</section>
+<div class="main">
+    <section id="colorwheel">
+        <div class="wrapper">
+            <canvas class="fireworks"></canvas>
+        </div>
+    </section>
+    <section class="buttons">
+        <!--Two main buttons in the home page-->
+        <div>
+            <a id="learn" href="html/colortheories.html" target="_self" class="btn btn-outline-dark btn-lg mainbtn">Learn the Color Wheel</a>
+        </div>
+        <div>
+            <a id="blend" href="html/blending.html" target="_self" class="btn btn-outline-dark btn-lg mainbtn">Try the Blending Tool</a>
+        </div>
+    </section>
+    <section id="loading-intro">
+        <div>
+            <p id="homepage-site-intro">This website is a place for novice art learners to learn color wheel and to test resultant colors when blending two colors. The reason why I’m particularly interested in this topic is that color is one of the key ways to describe and categorize our visual world. Better understanding colors provides learners a more precise way to understand the world and describe it. The gist of this site is that starting with just three primary colors, we can get all the colors of the rainbow.</p>
+        </div>
+    </section>
+</div>
+
 <footer class="footer templateux-footer">
     <div class="container-fluid">
         <div class="row">
@@ -77,17 +81,17 @@
     </div>
 </footer>
 
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.min.js"></script>
-<script src="js/anime.min.js"></script>
-<script src="js/aos.min.js"></script>
-<script src="js/animsition.min.js"></script>
-<script src="js/main.js"></script>
+<script src="Assets/js/jquery.min.js"></script>
+<script src="Assets/js/bootstrap.min.js"></script>
+<script src="Assets/js/anime.min.js"></script>
+<script src="Assets/js/aos.min.js"></script>
+<script src="Assets/js/animsition.min.js"></script>
+<script src="Assets/js/main.js"></script>
 
 <!--color wheel javascript:-->
-<script src="js/colorwheelanim.js"></script>
+<script src="Assets/js/colorwheelanim.js"></script>
 <!--Cursor clicking firework effects javascript-->
-<script src="js/blingbling.js"></script>
+<script src="Assets/js/blingbling.js"></script>
 
 </body>
 </html>

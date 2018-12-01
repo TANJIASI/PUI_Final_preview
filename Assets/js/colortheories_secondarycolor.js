@@ -1,4 +1,8 @@
-$(".btn").removeClass("btn-outline-light");
+// Reference: Anime.js fireworks canvas demo
+// https://codepen.io/juliangarnier/pen/gmOwJX
+
+
+    $(".btn").removeClass("btn-outline-light");
 $(".btn").addClass("btn-outline-dark");
 
 var c = document.getElementById("c");
@@ -10,7 +14,7 @@ var animations = [];
 var circles = [];
 
 var colorPicker = (function() {
-    var colors = ["#cddc39", "#ffc107", "#ff5722", "#c2185b", "#7b1fa2", "#26a69a"];
+    var colors = ["#aed581", "#ff9800", "#972cb0"];
 
     var index = 0;
     function next() {
@@ -28,8 +32,7 @@ var colorPicker = (function() {
 
 // self-added
 var textPicker = (function() {
-    // var colors = ["#f44336", "#ffd54f", "#81d4fa"];
-    var colortext = ["yellow-orange", "orange-red", "red-violet", "violet-blue", "blue-green", "green-yellow"];
+    var colortext = ["ORANGE", "VIOLET", "GREEN"];
 
     var index = 0;
     function next() {
@@ -45,7 +48,9 @@ var textPicker = (function() {
     }
 })();
 var descriptionPicker = (function() {
-    var colordescription = ["yellow is blablablabla", "blue is blablablabla", "red is blablablabla"];
+    var colordescription = ["Orange is the blend of red and yellow. It is a mixture of the energy associated with red and the happiness associated with yellow. Orange is associated with meanings of joy, warmth, heat, sunshine, enthusiasm, creativity, success, encouragement!",
+                        "Violet is the blend of red and blue. Violet  combines the calm stability of blue and the fierce energy of red and is often associated with royalty, nobility, luxury, power, and ambition.",
+                        "Green is the blend of blue and yellow. It is the color of life, renewal, nature, and energy, and is associated with meanings of growth, harmony, freshness, safety, fertility, and environment."];
     var index = 0;
     function next() {
         index = index++ < colordescription.length-1 ? index : 0;
@@ -78,7 +83,6 @@ function addClickListeners() {
 };
 
 function handleEvent(e) {
-
     // after the background become colorful
     // change the class of the button to light
     $(".btn").removeClass("btn-outline-dark");
@@ -88,7 +92,7 @@ function handleEvent(e) {
         // e.preventDefault();
         e = e.touches[0];
     }
-
+    // console.log();
     if (e.pageY > 100) {
 
 
@@ -165,8 +169,9 @@ function handleEvent(e) {
             duration: anime.random(1000, 1300),
             complete: removeAnimation
         });
+
         animations.push(fillAnimation, rippleAnimation, particlesAnimation);
-        // console.log(currentText);
+
 
         // self-added
         $("#color-text").text(currentText);
@@ -248,7 +253,7 @@ function handleInactiveUser() {
 
     function clearInactiveTimeout() {
         clearTimeout(inactive);
-        document.removeEventListener("mousedown", clearInactiveTimeout);
+        // document.removeEventListener("mousedown", clearInactiveTimeout);
         document.removeEventListener("touchstart", clearInactiveTimeout);
     }
 
